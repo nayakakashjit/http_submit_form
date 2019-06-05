@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css.css">
+</head>
+
+<body ng-app="regform">
+    <div class="" ng-controller="redgCtrl">
+        <div class="container">
+            <div class="row" style="margin-top:15px">
+                <div class="col-md-4">
+                    <div class="form_container form_wrapper">
+                        <div class="title_container">
+                            <h2>Registration Form</h2>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="">
+                                <form>
+                                    <div class="row clearfix">
+                                        <div class="col_half">
+                                            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                                <input type="text" name="name" ng-model="redgDetails.fname" placeholder="First Name" /> </div>
+                                        </div>
+                                        <div class="col_half">
+                                            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                                <input type="text" name="name" ng-model="redgDetails.lname" placeholder="Last Name" required /> </div>
+                                        </div>
+                                    </div>
+                                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                                        <input type="email" name="email" ng-model="redgDetails.email" placeholder="Email" required />
+                                    </div>
+                                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                                        <input type="password" name="password" ng-model="redgDetails.password" placeholder="Password" required />
+                                    </div>
+                                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                                        <input type="password" name="password" ng-model="redgDetails.repassword" placeholder="Re-type Password" required />
+                                    </div>
+
+                                    <div class="input_field radio_option">
+                                        <input type="radio" value="Male" ng-model="redgDetails.gender" name="gender" id="rd1">
+                                        <label for="rd1">Male</label>
+
+                                        <input type="radio" value="Femail" ng-model="redgDetails.gender" name="gender" id="rd2">
+                                        <label for="rd2">Female</label>
+                                    </div>
+                                    <div class="input_field select_option">
+                                        <select ng-model="redgDetails.country">
+                                <option>Select a country</option>
+                                <option value="India">Ind</option>
+                                <option value="Austrilia">Aus</option>
+                                <option value="Bangladesh">Bal</option>
+                                <option value="Pakistan">Pak</option>
+                                <option value="Srilanka">SL</option>
+                            </select>
+                                        <div class="select_arrow"></div>
+                                    </div>
+                                    <div class="input_field checkbox_option">
+                                        <input type="checkbox" ng-model="redgDetails.agree" id="cb1">
+                                        <label for="cb1">I agree with terms and conditions</label>
+                                    </div>
+                                    <div class="input_field checkbox_option">
+                                        <input type="checkbox" ng-model="redgDetails.notagree" id="cb2">
+                                        <label for="cb2">I want to receive the Update</label>
+                                    </div>
+                                    <input class="button" type="submit" ng-click="submit()" value="Register" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form_wrapper">
+                        <div class="title_container">
+                            <h2>Your Details</h2>
+                        </div>
+                        <h3>First Name : {{redgDetails.fname}}</h3>
+                        <h3>Last Name : {{redgDetails.lname}} </h3>
+                        <h3>Email Id : {{redgDetails.email}} </h3>
+                        <h3>Gender : {{redgDetails.gender}} </h3>
+                        <h3>Country : {{redgDetails.country}}</h3>
+                        <h3>I Agree : {{redgDetails.agree}}</h3>
+                        <h3>Update : {{redgDetails.notagree}}</h3>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form_wrapper">
+                        <div class="title_container">
+                            <h2>Status</h2>
+                        </div>
+                        <div ng-switch="statusdiv" ng-if="divstatus">
+
+                            <div ng-switch-when="loading">
+                                <img ng-src="loading.gif" class="img-responsive">
+                            </div>
+
+                            <div ng-switch-when="success">
+                                <div class="alert alert-success">
+                                    <strong>Success!</strong> Your Registration done succesfully
+                                </div>
+                            </div>
+                            <div ng-switch-when="error">
+                                <div class="alert alert-danger">
+                                    <strong>Error!</strong> Registration Failed.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <script src="https://use.fontawesome.com/4ecc3dbb0b.js"></script>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
